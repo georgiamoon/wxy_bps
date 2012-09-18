@@ -1,0 +1,597 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document>
+<Folder id="Fusiontables">
+<name>Fusiontables folder</name>
+<Style id="BasicStyle">
+<BalloonStyle>
+<text>$[description]</text>
+</BalloonStyle>
+<IconStyle>
+<color>FFFFFFFF</color>
+<scale>1.1</scale>
+<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/><Icon>
+<href>http://maps.google.com/mapfiles/kml/paddle/red-blank_maps.png</href>
+</Icon>
+</IconStyle>
+</Style>
+<Placemark>
+<name><![CDATA[<Point><coordinates>-71.0504290701,42.3335650529,0</coordinates></Point>]]></name>
+<styleUrl>#BasicStyle</styleUrl>
+<description>
+<![CDATA[<div class="googft-info-window" style="font-family:sans-serif">
+<b>geometry_vertex_count:</b> 1<br>
+<b>OBJECTID:</b> 34<br>
+<b>BLDG_ID:</b> 34.000000<br>
+<b>BLDG_NAME:</b> Gavin Bldg<br>
+<b>ADDRESS:</b> 215 Dorchester Street<br>
+<b>CITY:</b> South Boston<br>
+<b>ZIPCODE:</b> 02127<br>
+<b>CSP_SCH_ID:</b> 2450<br>
+<b>SCH_ID:</b> 2450<br>
+<b>SCH_LABEL:</b> UP Academy
+</div>]]>
+</description>
+<Point><coordinates>-71.050429,42.333565,0.0</coordinates></Point>
+<ExtendedData>
+<Data name="geometry_vertex_count">
+<value>1</value>
+</Data>
+<Data name="OBJECTID">
+<value>34</value>
+</Data>
+<Data name="BLDG_ID">
+<value>34.000000</value>
+</Data>
+<Data name="BLDG_NAME">
+<value>Gavin Bldg</value>
+</Data>
+<Data name="ADDRESS">
+<value>215 Dorchester Street</value>
+</Data>
+<Data name="CITY">
+<value>South Boston</value>
+</Data>
+<Data name="ZIPCODE">
+<value>02127</value>
+</Data>
+<Data name="CSP_SCH_ID">
+<value>2450</value>
+</Data>
+<Data name="SCH_ID">
+<value>2450</value>
+</Data>
+<Data name="SCH_LABEL">
+<value>UP Academy</value>
+</Data>
+<Data name="SHARED">
+<value></value>
+</Data>
+<Data name="COMPLEX">
+<value></value>
+</Data>
+<Data name="State_Leve">
+<value></value>
+</Data>
+<Data name="Schl_ID">
+<value>2450.000000</value>
+</Data>
+<Data name="Schl_Name">
+<value>UP Academy</value>
+</Data>
+<Data name="BLDG_NAME_ft_style">
+<value>0</value>
+</Data>
+<Data name="ADDRESS_ft_style">
+<value>0</value>
+</Data>
+<Data name="CITY_ft_style">
+<value>0</value>
+</Data>
+<Data name="ZIPCODE_ft_style">
+<value>0</value>
+</Data>
+<Data name="SCH_LABEL_ft_style">
+<value>0</value>
+</Data>
+<Data name="SHARED_ft_style">
+<value></value>
+</Data>
+<Data name="COMPLEX_ft_style">
+<value></value>
+</Data>
+<Data name="State_Leve_ft_style">
+<value></value>
+</Data>
+<Data name="Schl_Name_ft_style">
+<value>0</value>
+</Data>
+<Data name="import_notes">
+<value></value>
+</Data>
+</ExtendedData>
+</Placemark>
+<Placemark>
+<name><![CDATA[<Point><coordinates>-71.0887920003,42.3320299998,0</coordinates></Point>]]></name>
+<styleUrl>#BasicStyle</styleUrl>
+<description>
+<![CDATA[<div class="googft-info-window" style="font-family:sans-serif">
+<b>geometry_vertex_count:</b> 1<br>
+<b>OBJECTID:</b> 38<br>
+<b>BLDG_ID:</b> 48.000000<br>
+<b>BLDG_NAME:</b> Madison Park Bldg #3 - O'Bryant<br>
+<b>ADDRESS:</b> 55 Malcolm X Blvd<br>
+<b>CITY:</b> Roxbury<br>
+<b>ZIPCODE:</b> 02120<br>
+<b>CSP_SCH_ID:</b> 1030<br>
+<b>SCH_ID:</b> 1030<br>
+<b>SCH_LABEL:</b> O'Bryant School
+</div>]]>
+</description>
+<Point><coordinates>-71.088792,42.33203,0.0</coordinates></Point>
+<ExtendedData>
+<Data name="geometry_vertex_count">
+<value>1</value>
+</Data>
+<Data name="OBJECTID">
+<value>38</value>
+</Data>
+<Data name="BLDG_ID">
+<value>48.000000</value>
+</Data>
+<Data name="BLDG_NAME">
+<value>Madison Park Bldg #3 - O'Bryant</value>
+</Data>
+<Data name="ADDRESS">
+<value>55 Malcolm X Blvd</value>
+</Data>
+<Data name="CITY">
+<value>Roxbury</value>
+</Data>
+<Data name="ZIPCODE">
+<value>02120</value>
+</Data>
+<Data name="CSP_SCH_ID">
+<value>1030</value>
+</Data>
+<Data name="SCH_ID">
+<value>1030</value>
+</Data>
+<Data name="SCH_LABEL">
+<value>O'Bryant School</value>
+</Data>
+<Data name="SHARED">
+<value></value>
+</Data>
+<Data name="COMPLEX">
+<value></value>
+</Data>
+<Data name="State_Leve">
+<value></value>
+</Data>
+<Data name="Schl_ID">
+<value>1030.000000</value>
+</Data>
+<Data name="Schl_Name">
+<value><![CDATA[O'Bryant Math & Science]]>
+</value>
+</Data>
+<Data name="BLDG_NAME_ft_style">
+<value>1</value>
+</Data>
+<Data name="ADDRESS_ft_style">
+<value>1</value>
+</Data>
+<Data name="CITY_ft_style">
+<value>1</value>
+</Data>
+<Data name="ZIPCODE_ft_style">
+<value>1</value>
+</Data>
+<Data name="SCH_LABEL_ft_style">
+<value>1</value>
+</Data>
+<Data name="SHARED_ft_style">
+<value></value>
+</Data>
+<Data name="COMPLEX_ft_style">
+<value></value>
+</Data>
+<Data name="State_Leve_ft_style">
+<value></value>
+</Data>
+<Data name="Schl_Name_ft_style">
+<value>1</value>
+</Data>
+<Data name="import_notes">
+<value></value>
+</Data>
+</ExtendedData>
+</Placemark>
+<Placemark>
+<name><![CDATA[<Point><coordinates>-71.0845000004,42.3161499999,0</coordinates></Point>]]></name>
+<styleUrl>#BasicStyle</styleUrl>
+<description>
+<![CDATA[<div class="googft-info-window" style="font-family:sans-serif">
+<b>geometry_vertex_count:</b> 1<br>
+<b>OBJECTID:</b> 44<br>
+<b>BLDG_ID:</b> 55.000000<br>
+<b>BLDG_NAME:</b> Boston Latin Academy Bldg<br>
+<b>ADDRESS:</b> 205 Townsend Street<br>
+<b>CITY:</b> Boston<br>
+<b>ZIPCODE:</b> 02121<br>
+<b>CSP_SCH_ID:</b> 1020<br>
+<b>SCH_ID:</b> 1020<br>
+<b>SCH_LABEL:</b> Boston Latin Acad
+</div>]]>
+</description>
+<Point><coordinates>-71.0845,42.31615,0.0</coordinates></Point>
+<ExtendedData>
+<Data name="geometry_vertex_count">
+<value>1</value>
+</Data>
+<Data name="OBJECTID">
+<value>44</value>
+</Data>
+<Data name="BLDG_ID">
+<value>55.000000</value>
+</Data>
+<Data name="BLDG_NAME">
+<value>Boston Latin Academy Bldg</value>
+</Data>
+<Data name="ADDRESS">
+<value>205 Townsend Street</value>
+</Data>
+<Data name="CITY">
+<value>Boston</value>
+</Data>
+<Data name="ZIPCODE">
+<value>02121</value>
+</Data>
+<Data name="CSP_SCH_ID">
+<value>1020</value>
+</Data>
+<Data name="SCH_ID">
+<value>1020</value>
+</Data>
+<Data name="SCH_LABEL">
+<value>Boston Latin Acad</value>
+</Data>
+<Data name="SHARED">
+<value></value>
+</Data>
+<Data name="COMPLEX">
+<value></value>
+</Data>
+<Data name="State_Leve">
+<value></value>
+</Data>
+<Data name="Schl_ID">
+<value>1020.000000</value>
+</Data>
+<Data name="Schl_Name">
+<value>Boston Latin Academy</value>
+</Data>
+<Data name="BLDG_NAME_ft_style">
+<value>2</value>
+</Data>
+<Data name="ADDRESS_ft_style">
+<value>2</value>
+</Data>
+<Data name="CITY_ft_style">
+<value>2</value>
+</Data>
+<Data name="ZIPCODE_ft_style">
+<value>2</value>
+</Data>
+<Data name="SCH_LABEL_ft_style">
+<value>2</value>
+</Data>
+<Data name="SHARED_ft_style">
+<value></value>
+</Data>
+<Data name="COMPLEX_ft_style">
+<value></value>
+</Data>
+<Data name="State_Leve_ft_style">
+<value></value>
+</Data>
+<Data name="Schl_Name_ft_style">
+<value>2</value>
+</Data>
+<Data name="import_notes">
+<value></value>
+</Data>
+</ExtendedData>
+</Placemark>
+<Placemark>
+<name><![CDATA[<Point><coordinates>-71.0981196058,42.3139292204,0</coordinates></Point>]]></name>
+<styleUrl>#BasicStyle</styleUrl>
+<description>
+<![CDATA[<div class="googft-info-window" style="font-family:sans-serif">
+<b>geometry_vertex_count:</b> 1<br>
+<b>OBJECTID:</b> 81<br>
+<b>BLDG_ID:</b> 107.000000<br>
+<b>BLDG_NAME:</b> Hernandez Bldg<br>
+<b>ADDRESS:</b> 61 School Street<br>
+<b>CITY:</b> Roxbury<br>
+<b>ZIPCODE:</b> 02119<br>
+<b>CSP_SCH_ID:</b> 4053<br>
+<b>SCH_ID:</b> 4053<br>
+<b>SCH_LABEL:</b> Hernandez K-8
+</div>]]>
+</description>
+<Point><coordinates>-71.09812,42.313929,0.0</coordinates></Point>
+<ExtendedData>
+<Data name="geometry_vertex_count">
+<value>1</value>
+</Data>
+<Data name="OBJECTID">
+<value>81</value>
+</Data>
+<Data name="BLDG_ID">
+<value>107.000000</value>
+</Data>
+<Data name="BLDG_NAME">
+<value>Hernandez Bldg</value>
+</Data>
+<Data name="ADDRESS">
+<value>61 School Street</value>
+</Data>
+<Data name="CITY">
+<value>Roxbury</value>
+</Data>
+<Data name="ZIPCODE">
+<value>02119</value>
+</Data>
+<Data name="CSP_SCH_ID">
+<value>4053</value>
+</Data>
+<Data name="SCH_ID">
+<value>4053</value>
+</Data>
+<Data name="SCH_LABEL">
+<value>Hernandez K-8</value>
+</Data>
+<Data name="SHARED">
+<value></value>
+</Data>
+<Data name="COMPLEX">
+<value></value>
+</Data>
+<Data name="State_Leve">
+<value></value>
+</Data>
+<Data name="Schl_ID">
+<value>4053.000000</value>
+</Data>
+<Data name="Schl_Name">
+<value>HernA!ndez K-8</value>
+</Data>
+<Data name="BLDG_NAME_ft_style">
+<value>3</value>
+</Data>
+<Data name="ADDRESS_ft_style">
+<value>3</value>
+</Data>
+<Data name="CITY_ft_style">
+<value>1</value>
+</Data>
+<Data name="ZIPCODE_ft_style">
+<value>3</value>
+</Data>
+<Data name="SCH_LABEL_ft_style">
+<value>3</value>
+</Data>
+<Data name="SHARED_ft_style">
+<value></value>
+</Data>
+<Data name="COMPLEX_ft_style">
+<value></value>
+</Data>
+<Data name="State_Leve_ft_style">
+<value></value>
+</Data>
+<Data name="Schl_Name_ft_style">
+<value>3</value>
+</Data>
+<Data name="import_notes">
+<value></value>
+</Data>
+</ExtendedData>
+</Placemark>
+<Placemark>
+<name><![CDATA[<Point><coordinates>-71.1016900004,42.3378900001,0</coordinates></Point>]]></name>
+<styleUrl>#BasicStyle</styleUrl>
+<description>
+<![CDATA[<div class="googft-info-window" style="font-family:sans-serif">
+<b>geometry_vertex_count:</b> 1<br>
+<b>OBJECTID:</b> 88<br>
+<b>BLDG_ID:</b> 115.000000<br>
+<b>BLDG_NAME:</b> Boston Latin School Bldg<br>
+<b>ADDRESS:</b> 78 Avenue Louis Pasteur<br>
+<b>CITY:</b> Boston<br>
+<b>ZIPCODE:</b> 02115<br>
+<b>CSP_SCH_ID:</b> 1010<br>
+<b>SCH_ID:</b> 1010<br>
+<b>SCH_LABEL:</b> Boston Latin Sch
+</div>]]>
+</description>
+<Point><coordinates>-71.10169,42.33789,0.0</coordinates></Point>
+<ExtendedData>
+<Data name="geometry_vertex_count">
+<value>1</value>
+</Data>
+<Data name="OBJECTID">
+<value>88</value>
+</Data>
+<Data name="BLDG_ID">
+<value>115.000000</value>
+</Data>
+<Data name="BLDG_NAME">
+<value>Boston Latin School Bldg</value>
+</Data>
+<Data name="ADDRESS">
+<value>78 Avenue Louis Pasteur</value>
+</Data>
+<Data name="CITY">
+<value>Boston</value>
+</Data>
+<Data name="ZIPCODE">
+<value>02115</value>
+</Data>
+<Data name="CSP_SCH_ID">
+<value>1010</value>
+</Data>
+<Data name="SCH_ID">
+<value>1010</value>
+</Data>
+<Data name="SCH_LABEL">
+<value>Boston Latin Sch</value>
+</Data>
+<Data name="SHARED">
+<value></value>
+</Data>
+<Data name="COMPLEX">
+<value></value>
+</Data>
+<Data name="State_Leve">
+<value></value>
+</Data>
+<Data name="Schl_ID">
+<value>1010.000000</value>
+</Data>
+<Data name="Schl_Name">
+<value>Boston Latin School</value>
+</Data>
+<Data name="BLDG_NAME_ft_style">
+<value>4</value>
+</Data>
+<Data name="ADDRESS_ft_style">
+<value>4</value>
+</Data>
+<Data name="CITY_ft_style">
+<value>2</value>
+</Data>
+<Data name="ZIPCODE_ft_style">
+<value>4</value>
+</Data>
+<Data name="SCH_LABEL_ft_style">
+<value>4</value>
+</Data>
+<Data name="SHARED_ft_style">
+<value></value>
+</Data>
+<Data name="COMPLEX_ft_style">
+<value></value>
+</Data>
+<Data name="State_Leve_ft_style">
+<value></value>
+</Data>
+<Data name="Schl_Name_ft_style">
+<value>4</value>
+</Data>
+<Data name="import_notes">
+<value></value>
+</Data>
+</ExtendedData>
+</Placemark>
+<Placemark>
+<name><![CDATA[<Point><coordinates>-71.1377000002,42.35205,0</coordinates></Point>]]></name>
+<styleUrl>#BasicStyle</styleUrl>
+<description>
+<![CDATA[<div class="googft-info-window" style="font-family:sans-serif">
+<b>geometry_vertex_count:</b> 1<br>
+<b>OBJECTID:</b> 113<br>
+<b>BLDG_ID:</b> 142.000000<br>
+<b>BLDG_NAME:</b> Jackson Mann Bldg<br>
+<b>ADDRESS:</b> 40 Armington Street<br>
+<b>CITY:</b> Allston<br>
+<b>ZIPCODE:</b> 02134<br>
+<b>CSP_SCH_ID:</b> 4620<br>
+<b>SCH_ID:</b> 4620<br>
+<b>SCH_LABEL:</b> Jackson/Mann K-8
+</div>]]>
+</description>
+<Point><coordinates>-71.1377,42.35205,0.0</coordinates></Point>
+<ExtendedData>
+<Data name="geometry_vertex_count">
+<value>1</value>
+</Data>
+<Data name="OBJECTID">
+<value>113</value>
+</Data>
+<Data name="BLDG_ID">
+<value>142.000000</value>
+</Data>
+<Data name="BLDG_NAME">
+<value>Jackson Mann Bldg</value>
+</Data>
+<Data name="ADDRESS">
+<value>40 Armington Street</value>
+</Data>
+<Data name="CITY">
+<value>Allston</value>
+</Data>
+<Data name="ZIPCODE">
+<value>02134</value>
+</Data>
+<Data name="CSP_SCH_ID">
+<value>4620</value>
+</Data>
+<Data name="SCH_ID">
+<value>4620</value>
+</Data>
+<Data name="SCH_LABEL">
+<value>Jackson/Mann K-8</value>
+</Data>
+<Data name="SHARED">
+<value>Shared</value>
+</Data>
+<Data name="COMPLEX">
+<value></value>
+</Data>
+<Data name="State_Leve">
+<value></value>
+</Data>
+<Data name="Schl_ID">
+<value>4620.000000</value>
+</Data>
+<Data name="Schl_Name">
+<value>Jackson/Mann K-8</value>
+</Data>
+<Data name="BLDG_NAME_ft_style">
+<value>5</value>
+</Data>
+<Data name="ADDRESS_ft_style">
+<value>5</value>
+</Data>
+<Data name="CITY_ft_style">
+<value>3</value>
+</Data>
+<Data name="ZIPCODE_ft_style">
+<value>5</value>
+</Data>
+<Data name="SCH_LABEL_ft_style">
+<value>5</value>
+</Data>
+<Data name="SHARED_ft_style">
+<value>0</value>
+</Data>
+<Data name="COMPLEX_ft_style">
+<value></value>
+</Data>
+<Data name="State_Leve_ft_style">
+<value></value>
+</Data>
+<Data name="Schl_Name_ft_style">
+<value>5</value>
+</Data>
+<Data name="import_notes">
+<value></value>
+</Data>
+</ExtendedData>
+</Placemark>
+</Folder>
+</Document>
+</kml>

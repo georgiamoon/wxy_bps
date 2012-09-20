@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+  <title>Fusion Table Markers and Sidebar</title>
+  <link href="http://code.google.com/apis/maps/documentation/javascript/examples/default.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="http://www.google.com/jsapi"></script> 
+  <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+  <script type="text/javascript">
+
+  google.load('visualization', '1', {'packages':['table']});
+  var map;
+  var markers = [];
+  var infoWindow = new google.maps.InfoWindow();
+  var geocoder;
+  var marker;
+  var zoneLayer;
+  var zoneKey;
+  var specialZone;
+  var bostonLayer;
+  var schoolLayerResults;
+  var schoolKey;
+  var scenario;
+  var zoneNum;
+  
+  var basemap = [
+		  {
+		    "featureType": "landscape",
+		    "elementType": "geometry",
+		    "stylers": [
+		      { "visibility": "on" },
+		      {"saturation": -100},
+                {"gamma": 0.50}
+		    ]
+		  },{
+		    "featureType": "water",
+		    "stylers": [
+		      { "visibility": "simplified" },
+		      { "color": "#97d6f4" },
+		      { "saturation": -32 }
+		    ]
+		  },{
+		    "featureType": "road",
+		    "elementType": "geometry",
+		    "stylers": [
+		      { "weight": 0.4 },
+		      { "color": "#ffffff" },
+		      { "visibility": "on" }
+		    ]
+		  },{
+		    "featureType": "road",
+		    "elementType": "labels",
+		    "stylers": [
+		      { "visibility": "simplified" }
+		    ]
+		  }
+		];
+
+  function initialize() {
+    geocoder = new google.maps.Geocoder();
+    var boston = new google.maps.LatLng(42.3200, -71.084);
+	var BostonStyle = new google.maps.StyledMapType(basemap, {name: "Boston Public Schools"});
+
+    var mapOptions = {
+      center: boston,
+      zoom: 12,
+      mapTypeControlOptions: { mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'Boston Public Schools']}
+    };
+
+    map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
+    map.mapTypes.set('Boston Public Schools', BostonStyle);
+    map.setMapTypeId('Boston Public Schools');
+
+	bostonLayer = new google.maps.KmlLayer('http://georgiabullen.com/www/boston/bostonoutline.kml', { preserveViewport: true, clickable:false});
+	bostonLayer.setMap(map);
+	console.log("boston boundaries");
+	
+
+  }
+
+function codeAddress() {
+      
+        var address = document.getElementById('address').value;
+        
+        /*
+        
+        SCENARIO - 6
+        schools: 1HIL5eYvKwic6bvOHM8StEhdH_PVmk2K2Op59lgc
+        zone: 1JouUBlL3ZlGC8TAsRXEPeqQyrmIMx3acgdO-Jo0
+        
+        SCENARIO - 9
+        schools: 1JeHVt0yTFcgjmTS5JPcfsybgfRxVSkn2xZhxRM0
+        zone:1gqE8zik8SGPUGo5TeVPrlPgD23ZrWwL6Q5bJfnU
+        
+        SCENARIO - 11
+        schools: 1g2WTYFk3vbYJ1d8_mMrcfWQRylLczT-wafYbnAY
+        zone: 1i6CgHn4CNukzT_AcNJUoBcS7PgxWFE4kCQTPbU8
+        
+        ell
+        zone: 1vHRlXwYLozifwaBgcXbnLd5d3Be4XT65NfWthX0
+        
+        sped
+        schools: 1yb2F7iyZ-_DbKM8jcoR1MBzgd5V4vjAUBueH23A
+        zone: 1BLm4bd-ejBBT8PtOu9lanCjCIZcCCY_c14059mg
+        
+        middle school
+        zone: 1a4luco0-QDFWfQKxgciZbnXJrG9Z2x9awgJn3Z8
+        
+        */
+        if (document.getElementById('sixZ').checked) {
+		    zoneNum = "six";
+		    scenario = "gened";
+		   	schoolKey = "1HIL5eYvKwic6bvOHM8StEhdH_PVmk2K2Op59lgc";
+     	    zoneKey = "1JouUBlL3ZlGC8TAsRXEPeqQyrmIMx3acgdO-Jo0";
+		   	
+		} else if (document.getElementById('nineZ').checked) {
+		   zoneNum = "nine";
+		   scenario = "gened";
+		   schoolKey = "1JeHVt0yTFcgjmTS5JPcfsybgfRxVSkn2xZhxRM0";
+           zoneKey = "1gqE8zik8SGPUGo5TeVPrlPgD23ZrWwL6Q5bJfnU";
+		   
+		} else if (document.getElementById('elevenZ').checked) {
+		   zoneNum = "eleven";
+		   scenario = "gened";
+		   schoolKey = "1g2WTYFk3vbYJ1d8_mMrcfWQRylLczT-wafYbnAY";
+           zoneKey = "1i6CgHn4CNukzT_AcNJUoBcS7PgxWFE4kCQTPbU8";
+		   	   
+		} else if(document.getElementById('ell').checked) {
+		   zoneNum = "NA";
+		   scenario = "ell";
+		   schoolKey = "";
+		   zoneKey = "1vHRlXwYLozifwaBgcXbnLd5d3Be4XT65NfWthX0";
+		  
+		} else if(document.getElementById('sped').checked) {
+		   zoneNum = "NA";
+		   scenario = "sped";
+		   schoolKey = "1yb2F7iyZ-_DbKM8jcoR1MBzgd5V4vjAUBueH23A";
+		   zoneKey = "1BLm4bd-ejBBT8PtOu9lanCjCIZcCCY_c14059mg";
+		  
+		}  
+   
+        console.log("scenario = " + scenario + ", zones = " + zoneNum);
+        
+        console.log(address);
+        if (address === null) {
+        	return;
+        }
+        
+        geocoder.geocode( {'address': address}, function(results, status) {
+                    
+          if (status == google.maps.GeocoderStatus.OK) {
+           	var addrLatLng = results[0].geometry.location;
+           	queryForZone(addrLatLng);
+           	console.log(addrLatLng);
+           	
+      		if (marker) {
+			    marker.setMap(null);
+			    marker = null;
+			}  
+			 
+     
+            if (marker == null || marker === undefined) {
+	            map.setCenter(addrLatLng);
+	            map.setZoom(13);
+	            marker = new google.maps.Marker({
+	                map: map,
+	                position: addrLatLng
+	            });
+	    	}
+            
+          } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+          }
+        });
+      }
+      
+  // unset the zone, query & school layers
+      function clearMapLayers() {
+      		if (bostonLayer) {
+		    	bostonLayer.setMap(null);
+		    	bostonLayer = null;
+		    	console.log("Initial Boston Layer cleared")
+		    }
+		    
+		    if (schoolLayerResults){
+			    schoolLayerResults.setMap(null);
+		    	schoolLayerResults = null;
+				console.log("School Layer Results cleared");
+		    }
+		    
+		    if(zoneLayer){
+		    	zoneLayer.setMap(null);
+		    	zoneLayer = null;
+		    	console.log("Zone Layer cleared");	
+		    }
+      }
+      
+      function queryForZone(addrLatLng) {
+
+		    clearMapLayers();
+		    
+		    var zoneQueryResult;		    
+		    var zoneQuery = encodeURIComponent('select Zone from ' + zoneKey 
+		    	+ ' where ST_INTERSECTS(geometry, CIRCLE( LATLNG(' 
+		    	+ addrLatLng.Xa + ', ' + addrLatLng.Ya + '), 1))');
+    		var query = new google.visualization.Query('http://www.google.com/fusiontables/gvizdata?tq=' + zoneQuery);
+
+    		query.send(function getZoneData(response){
+				var dt = response.getDataTable();
+				console.log("DT: " + dt);
+			    console.log("DT: " + JSON.stringify(dt));
+			    
+			     for (var i = 0; i < dt.getNumberOfRows(); i++) {
+			      
+			      	zoneQueryResult = dt.getValue(i,0);
+			      	console.log(zoneQueryResult);
+			      	queryForSchool(addrLatLng, zoneQueryResult);
+			      
+			      }
+			});
+		    
+
+			
+        	
+     } // end queryForZone
+
+	function queryForSchool(addrLatLng, zoneQueryResult){
+		    
+		    clearMapLayers();
+		    var whereClause;
+		    
+		    if (scenario === 'ell' || scenario === 'sped') {		    	
+				whereClause = 'WHERE Zone = ' + zoneQueryResult;
+											
+		    } else {  // General Education
+		    	whereClause = 'WHERE Zone = ' + zoneQueryResult + ' or WHERE ST_INTERSECTS(geometry, CIRCLE( LATLNG(' 
+		    	+ addrLatLng.Xa + ', ' + addrLatLng.Ya + '), 1200))';
+		    }		    
+		    
+		    var schoolQuery = encodeURIComponent('select geometry, SCHOOL_NAM, GRADE_SPAN, FEEDS_INTO, SCHOOL_PRO from ' 
+		    	+ schoolKey 
+		    	+ whereClause);
+		    	
+    		var query = new google.visualization.Query('http://www.google.com/fusiontables/gvizdata?tq=' + schoolQuery);
+    		console.log(query);
+    		query.send(getSchoolData);
+		    
+		    //setZoneLayerOnMap(zoneKey, zoneQueryResult);
+      }
+
+  function getSchoolData(response) {
+    var dt = response.getDataTable();
+    console.log("DT: " + dt);
+    console.log("DT: " + JSON.stringify(dt));
+
+    var side_html = '<table style="border-collapse: collapse" border="1" \
+                       cellpadding="5"> \
+                       <thead> \
+                         <tr style="background-color:#e0e0e0"> \
+                           <th>School Name</th> \
+                           <th>Grades</th> \
+                         </tr> \
+                       </thead> \
+                       <tbody>';
+
+    for (var i = 0; i < dt.getNumberOfRows(); i++) {
+      //console.log("dt.get(i) = " + dt.getValue(i,0));
+      
+      var currentPoint = dt.getValue(i,0);
+      var latlng;
+      
+      for( var j = 0; j < currentPoint.length; j++ ){
+      	var parser = new DOMParser();
+      	var item1 = parser.parseFromString(currentPoint, "text/xml");
+      	
+      	var strdata = item1.firstChild.firstChild.firstChild.data;
+      	var point = strdata.split(",");
+      	
+      	latlng = new google.maps.LatLng(point[1], point[0]);
+      	
+      }
+      
+      var lat = latlng.Xa;
+      var lng = latlng.Ya;
+      var name = dt.getValue(i,1);
+      var grades = dt.getValue(i,2);
+      var feeder = dt.getValue(i,3);
+      var link = dt.getValue(i,4);
+      var pop = "pop";
+
+      var pt = new google.maps.LatLng(lat, lng);
+
+      var html = "<strong>" + name + "</strong><br />" + 
+      				grades+ "<br />" + 
+      				feeder+ "<br />" + 
+      				link.link(link);;
+
+      side_html += '<tr> \
+                      <td><a href="javascript:myclick(' + i + ')">' + name + '</a></td> \
+                      <td>' + grades + '</td> \
+                    </tr>';
+
+
+      createMarker(pt, html);
+
+    }
+
+    side_html += '</tbody> \
+                </table>';
+    document.getElementById("side_bar").innerHTML = side_html;
+  }
+
+
+  function createMarker(point,info) {
+    var iconURL = 'icons/schoolicon-01.png';				
+    var iconSize = new google.maps.Size(20,34);
+    var iconOrigin = new google.maps.Point(0,0);	
+    var iconAnchor = new google.maps.Point(10,34);
+
+    var myIcon = new google.maps.MarkerImage(iconURL, iconSize, iconOrigin, iconAnchor);
+
+    var iconShape = [8,33, 4,15, 1,15, 0,12, 0,5, 6,0, 12,0, 19,14, 15,15, 10,33];
+    var myMarkerShape = {
+      coord: iconShape,
+      type: 'poly'
+    };
+
+    var myMarkerOpts = {
+      position: point,
+      map: map,
+      icon: myIcon,
+      shape: myMarkerShape
+    };
+
+    var marker = new google.maps.Marker(myMarkerOpts);
+
+    markers.push(marker);
+
+    google.maps.event.addListener(marker, 'click', function() {
+      infoWindow.close();
+      infoWindow.setContent(info);
+      infoWindow.open(map,marker); 
+    });
+  }
+
+  function myclick(num) {
+    google.maps.event.trigger(markers[num], "click");
+  }
+
+
+  </script>
+
+</head>
+<body onload="initialize()">
+<div style="float:left;">
+    <div id="instructions">Enter your home address and school type to explore your school options for the different scenarios.<br /><br /></div>
+    
+     <form id="scenario" style="width=60px;">
+    <fieldset>
+    <legend><strong>General Education</strong></legend>
+		<input type="radio" name="zoneKey" id="sixZ" /> 6 Zones<br />
+		<input type="radio" name="zoneKey" id="nineZ" /> 9 Zones<br />
+		<input type="radio" name="zoneKey" id="elevenZ" /> 11 Zones<br />
+	</fieldset>
+	</form>
+	<form id="schoolType" style="width=60px;">
+	<fieldset>
+	<legend><strong>Special Programs</strong></legend>
+		<input type="radio" name="schoolKey" id="sped" /> Students with Disabilities<br />
+		<input type="radio" name="schoolKey" id="ell" /> English Language Learners<br />
+		<br />
+	</fieldset>
+	</form>
+	<br />
+	<br />
+	<div id="addrInput"> 
+	Home address: <input id="address" size="60" type="text box" value="Boston, MA"><input type="button" value="Go!" onclick="codeAddress()"><br /></div>
+    </div>
+  <div id="map_canvas" style="width: 800px; height: 600px; position: relative; left: 10px"></div>
+  <div id="side_bar" style="width: 200px; height: 600px; position: relative; left: 830px; overflow: auto;"></div>
+</body>
+</html>

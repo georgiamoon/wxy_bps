@@ -1,0 +1,76 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["map"]});
+      google.setOnLoadCallback(drawMap);
+
+	var basemap = [
+		  {
+		    "featureType": "landscape",
+		    "elementType": "geometry",
+		    "stylers": [
+		      { "visibility": "on" },
+		      {"saturation": -100},
+                {"gamma": 0.50}
+		    ]
+		  },{
+		    "featureType": "water",
+		    "stylers": [
+		      { "visibility": "simplified" },
+		      { "color": "#97d6f4" },
+		      { "saturation": -32 }
+		    ]
+		  },{
+		    "featureType": "road",
+		    "elementType": "geometry",
+		    "stylers": [
+		      { "weight": 0.4 },
+		      { "color": "#ffffff" },
+		      { "visibility": "on" }
+		    ]
+		  },{
+		    "featureType": "road",
+		    "elementType": "labels",
+		    "stylers": [
+		      { "visibility": "simplified" }
+		    ]
+		  }
+		];
+
+
+      function drawMap() {
+        var data = google.visualization.arrayToDataTable([
+          ['Lat', 'Lon', 'Name'],
+          [37.4232, -122.0853, 'Work'],
+          [37.4289, -122.1697, 'University'],
+          [37.6153, -122.3900, 'Airport'],
+          [37.4422, -122.1731, 'Shopping']
+        ]);
+        
+		var latlng = new google.maps.LatLng(42.3200, -71.084); //boston
+        var BostonStyle = new google.maps.StyledMapType(baseman, {name: "Boston Public Schools"});
+        
+        var mapOptions = {
+          center: latlng,
+          zoom: 12,
+          mapTypeControlOptions: { mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'Boston Public Schools']}
+        };
+        map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
+        map.mapTypes.set('Boston Public Schools', BostonStyle);
+        map.setMapTypeId('Boston Public Schools');
+        
+        //boston outline
+        bostonLayer = new google.maps.KmlLayer('city_boundary.kml', { preserveViewport: true});
+		bostonLayer.setMap(map);
+		console.log("boston boundaries");
+		
+		map.draw(data, {showTip: true});
+      }
+    </script>
+  </head>
+
+  <body>
+    <div id="map_div" style="width: 400px; height: 300px"></div>
+  </body>
+</html>

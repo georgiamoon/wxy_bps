@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document>
+<Folder id="Fusiontables">
+<name>Fusiontables folder</name>
+<Style id="BasicStyle">
+<BalloonStyle>
+<text>$[description]</text>
+</BalloonStyle>
+<IconStyle>
+<scale>1.1</scale>
+<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/><Icon>
+<href>http://georgiabullen.com/www/boston/icons/Charter2_schoolicon.png</href>
+</Icon>
+</IconStyle>
+</Style>
+<Placemark>
+<name><![CDATA[<Point><coordinates>-71.073373069,42.3219188072,0</coordinates></Point>]]></name>
+<styleUrl>#BasicStyle</styleUrl>
+<description>
+<![CDATA[<div class="googft-info-window" style="font-family:sans-serif">
+<b>geometry_vertex_count:</b> 1<br>
+<b>Join_Count:</b> 1<br>
+<b>TARGET_FID:</b> 78<br>
+<b>Join_Cou_1:</b> 1<br>
+<b>TARGET_F_1:</b> 78<br>
+<b>OBJECTID_1:</b> <br>
+<b>BLDG_ID:</b> <br>
+<b>BLDG_NAME:</b> <br>
+<b>ADDRESS:</b> 504 Dudley St<br>
+<b>CITY:</b> Roxbury
+</div>]]>
+</description>
+<Point><coordinates>-71.073373,42.321919,0.0</coordinates></Point>
+<ExtendedData>
+<Data name="geometry_vertex_count">
+<value>1</value>
+</Data>
+<Data name="Join_Count">
+<value>1</value>
+</Data>
+<Data name="TARGET_FID">
+<value>78</value>
+</Data>
+<Data name="Join_Cou_1">
+<value>1</value>
+</Data>
+<Data name="TARGET_F_1">
+<value>78</value>
+</Data>
+<Data name="OBJECTID_1">
+<value></value>
+</Data>
+<Data name="BLDG_ID">
+<value></value>
+</Data>
+<Data name="BLDG_NAME">
+<value></value>
+</Data>
+<Data name="ADDRESS">
+<value>504 Dudley St</value>
+</Data>
+<Data name="CITY">
+<value>Roxbury</value>
+</Data>
+<Data name="ZIPCODE">
+<value>02119</value>
+</Data>
+<Data name="CSP_SCH_ID">
+<value>4123.000000</value>
+</Data>
+<Data name="SCH_ID">
+<value>4123.000000</value>
+</Data>
+<Data name="SCH_LABEL">
+<value>Dudley St Neighborhood Charter</value>
+</Data>
+<Data name="SHARED">
+<value></value>
+</Data>
+<Data name="POINT_X">
+<value></value>
+</Data>
+<Data name="POINT_Y">
+<value></value>
+</Data>
+<Data name="Citywide">
+<value></value>
+</Data>
+<Data name="Charter">
+<value>1</value>
+</Data>
+<Data name="OID_">
+<value></value>
+</Data>
+<Data name="SCH_ID_1">
+<value></value>
+</Data>
+<Data name="SCHOOL_NAM">
+<value>Dudley St. Neighborhood Charter</value>
+</Data>
+<Data name="GRADE_SPAN">
+<value>K1 to Gr. 1</value>
+</Data>
+<Data name="MIDDLE_SCH">
+<value></value>
+</Data>
+<Data name="FEEDS_INTO">
+<value></value>
+</Data>
+<Data name="SCHOOL_PRO">
+<value>http://www.bostonpublicschools.org/school/dudley-street-neighborhood-school</value>
+</Data>
+<Data name="Schl_Type">
+<value>BPS Charter School</value>
+</Data>
+<Data name="Id">
+<value></value>
+</Data>
+<Data name="Zone">
+<value>04</value>
+</Data>
+<Data name="SHARED_ft_style">
+<value></value>
+</Data>
+<Data name="Schl_Type_ft_style">
+<value>0</value>
+</Data>
+<Data name="Zone_ft_style">
+<value>3</value>
+</Data>
+<Data name="import_notes">
+<value></value>
+</Data>
+</ExtendedData>
+</Placemark>
+</Folder>
+</Document>
+</kml>

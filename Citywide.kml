@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document>
+<Folder id="Fusiontables">
+<name>Fusiontables folder</name>
+<Style id="BasicStyle">
+<BalloonStyle>
+<text>$[description]</text>
+</BalloonStyle>
+<IconStyle>
+<scale>1.1</scale>
+<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/><Icon>
+<href>http://georgiabullen.com/www/boston/icons/Citywide_schoolicon.png</href>
+</Icon>
+</IconStyle>
+</Style>
+<Placemark>
+<name><![CDATA[<Point><coordinates>-71.0981196058,42.3139292204,0</coordinates></Point>]]></name>
+<styleUrl>#BasicStyle</styleUrl>
+<description>
+<![CDATA[<div class="googft-info-window" style="font-family:sans-serif">
+<b>geometry_vertex_count:</b> 1<br>
+<b>Join_Count:</b> 1<br>
+<b>TARGET_FID:</b> 79<br>
+<b>Join_Cou_1:</b> 1<br>
+<b>TARGET_F_1:</b> 79<br>
+<b>OBJECTID_1:</b> <br>
+<b>BLDG_ID:</b> <br>
+<b>BLDG_NAME:</b> <br>
+<b>ADDRESS:</b> <br>
+<b>CITY:</b> Roxbury
+</div>]]>
+</description>
+<Point><coordinates>-71.09812,42.313929,0.0</coordinates></Point>
+<ExtendedData>
+<Data name="geometry_vertex_count">
+<value>1</value>
+</Data>
+<Data name="Join_Count">
+<value>1</value>
+</Data>
+<Data name="TARGET_FID">
+<value>79</value>
+</Data>
+<Data name="Join_Cou_1">
+<value>1</value>
+</Data>
+<Data name="TARGET_F_1">
+<value>79</value>
+</Data>
+<Data name="OBJECTID_1">
+<value></value>
+</Data>
+<Data name="BLDG_ID">
+<value></value>
+</Data>
+<Data name="BLDG_NAME">
+<value></value>
+</Data>
+<Data name="ADDRESS">
+<value></value>
+</Data>
+<Data name="CITY">
+<value>Roxbury</value>
+</Data>
+<Data name="ZIPCODE">
+<value>02119</value>
+</Data>
+<Data name="CSP_SCH_ID">
+<value>4053.000000</value>
+</Data>
+<Data name="SCH_ID">
+<value>4053.000000</value>
+</Data>
+<Data name="SCH_LABEL">
+<value>Hernandez K-8</value>
+</Data>
+<Data name="SHARED">
+<value></value>
+</Data>
+<Data name="POINT_X">
+<value></value>
+</Data>
+<Data name="POINT_Y">
+<value></value>
+</Data>
+<Data name="Citywide">
+<value>1</value>
+</Data>
+<Data name="Charter">
+<value></value>
+</Data>
+<Data name="OID_">
+<value></value>
+</Data>
+<Data name="SCH_ID_1">
+<value></value>
+</Data>
+<Data name="SCHOOL_NAM">
+<value>HernA!ndez K-8</value>
+</Data>
+<Data name="GRADE_SPAN">
+<value>K1 to Gr. 8</value>
+</Data>
+<Data name="MIDDLE_SCH">
+<value></value>
+</Data>
+<Data name="FEEDS_INTO">
+<value></value>
+</Data>
+<Data name="SCHOOL_PRO">
+<value>http://www.bostonpublicschools.org/school/hern%C3%A1ndez-k-8-school</value>
+</Data>
+<Data name="Schl_Type">
+<value>Citywide School</value>
+</Data>
+<Data name="Id">
+<value></value>
+</Data>
+<Data name="Zone">
+<value>05</value>
+</Data>
+<Data name="SHARED_ft_style">
+<value></value>
+</Data>
+<Data name="Schl_Type_ft_style">
+<value>1</value>
+</Data>
+<Data name="Zone_ft_style">
+<value>5</value>
+</Data>
+<Data name="import_notes">
+<value></value>
+</Data>
+</ExtendedData>
+</Placemark>
+<Placemark>
+<name><![CDATA[<Point><coordinates>-71.1377000002,42.35205,0</coordinates></Point>]]></name>
+<styleUrl>#BasicStyle</styleUrl>
+<description>
+<![CDATA[<div class="googft-info-window" style="font-family:sans-serif">
+</div>]]>
+</description>
+<Point><coordinates>-71.1377,42.35205,0.0</coordinates></Point>
+<ExtendedData>
+<Data name="SCHOOL_NAM">
+<value>1</value>
+</Data>
+<Data name="Join_Count">
+<value>1</value>
+</Data>
+<Data name="TARGET_FID">
+<value>80</value>
+</Data>
+<Data name="Join_Cou_1">
+<value>1</value>
+</Data>
+<Data name="TARGET_F_1">
+<value>80</value>
+</Data>
+<Data name="OBJECTID_1">
+<value></value>
+</Data>
+<Data name="BLDG_ID">
+<value></value>
+</Data>
+<Data name="BLDG_NAME">
+<value></value>
+</Data>
+<Data name="ADDRESS">
+<value>40 Armingston St</value>
+</Data>
+<Data name="CITY">
+<value>Allston</value>
+</Data>
+<Data name="ZIPCODE">
+<value>02134</value>
+</Data>
+<Data name="CSP_SCH_ID">
+<value>4620.000000</value>
+</Data>
+<Data name="SCH_ID">
+<value>4620.000000</value>
+</Data>
+<Data name="SCH_LABEL">
+<value>Jackson Mann K-8</value>
+</Data>
+<Data name="SHARED">
+<value></value>
+</Data>
+<Data name="POINT_X">
+<value></value>
+</Data>
+<Data name="POINT_Y">
+<value></value>
+</Data>
+<Data name="Citywide">
+<value>1</value>
+</Data>
+<Data name="Charter">
+<value></value>
+</Data>
+<Data name="OID_">
+<value></value>
+</Data>
+<Data name="SCH_ID_1">
+<value></value>
+</Data>
+<Data name="SCHOOL_NAM">
+<value>Jackson/Mann K-8</value>
+</Data>
+<Data name="GRADE_SPAN">
+<value>K1 to Gr. 8</value>
+</Data>
+<Data name="MIDDLE_SCH">
+<value></value>
+</Data>
+<Data name="FEEDS_INTO">
+<value></value>
+</Data>
+<Data name="SCHOOL_PRO">
+<value>http://www.bostonpublicschools.org/school/jacksonmann-k-8-school</value>
+</Data>
+<Data name="Schl_Type">
+<value>Citywide School</value>
+</Data>
+<Data name="Id">
+<value></value>
+</Data>
+<Data name="Zone">
+<value>02</value>
+</Data>
+<Data name="SHARED_ft_style">
+<value></value>
+</Data>
+<Data name="Schl_Type_ft_style">
+<value>1</value>
+</Data>
+<Data name="Zone_ft_style">
+<value>1</value>
+</Data>
+<Data name="import_notes">
+<value></value>
+</Data>
+</ExtendedData>
+</Placemark>
+</Folder>
+</Document>
+</kml>

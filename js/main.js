@@ -107,67 +107,73 @@ function codeAddress() {
     }
 
     /*
-
      SCENARIO - 6
-     schools: 1AV4_hj723YiObXhv5d2PdGnDlH3_ysq2gVGp1hU
+     schools: 1MGOu4r5WXL_r9iBtlJxZNVq_KHC4LmG__Fn40qM
      zone: 1JouUBlL3ZlGC8TAsRXEPeqQyrmIMx3acgdO-Jo0
 
      SCENARIO - 9
-     schools: 1EOZf1FjWlLKft-oERgBsKf_3ogzlo3uTsMRJGGA
+     schools: 1DBL_nl9hmygd_CkKTR4S44KlYU4AOsLlUxt72eY
      zone:1gqE8zik8SGPUGo5TeVPrlPgD23ZrWwL6Q5bJfnU
 
      SCENARIO - 11
-     schools: 1LXQGhAElMMZevDienkwggWcp6EhVoog6-APu3aE
+     schools: 1r0MxyLEGJTGANkmpD3hZWJLpvTidrYkwVDVISjw
      zone: 1i6CgHn4CNukzT_AcNJUoBcS7PgxWFE4kCQTPbU8
 
      ell
-     schools: 1gbqKxbYQGNB8UaIzDVCX5yK1UFjU9hOCABXBAVE
+     schools: 1Wxlq5oKcKWt5HdlZMnaSc5SbXc_rEz3Abyz7eEQ
      zone: 1vHRlXwYLozifwaBgcXbnLd5d3Be4XT65NfWthX0
 
      sped
-     schools: 1GF6y4VF4b4hNXrxoAZoF6zOZ52-T-qQL38_tN4I
+     schools: 1L890nKUe8-INk4FnG8C1-kH_9tfS4OylLG7vRYc
      zone: 1BLm4bd-ejBBT8PtOu9lanCjCIZcCCY_c14059mg
 
      middle school
-     zone: 1a4luco0-QDFWfQKxgciZbnXJrG9Z2x9awgJn3Z8
+     schools:
+     	MS: 1miHSJyO1iXQi_CI0bPv-n25lbUrR1qb75wwrNtw
+		MS-Citywide: 1D__5gaIU2SUA3zp3R7-ExFsRPZvmN-DaK8Utrec
+     zone: 18bfX8IzK9VEjRU1Qm66mvRoMJtNcuIvPXPAYSpE
 
      citywide schools
      1U4deSKE-VyXpNwjpsIyCKaemTJaqJXfvszT7Bq8
 
      charter schools
      13vio8J9tcoSzNfLil8R8pymcL5TZ-1sJuvLhz9c
-
-
      */
+     
     if (document.getElementById('ell').checked) {
         zoneNum = "NA";
         scenario = "ell";
-        schoolKey = "1gbqKxbYQGNB8UaIzDVCX5yK1UFjU9hOCABXBAVE";
+        schoolKey = "1Wxlq5oKcKWt5HdlZMnaSc5SbXc_rEz3Abyz7eEQ";
         zoneKey = "1vHRlXwYLozifwaBgcXbnLd5d3Be4XT65NfWthX0";
 
     } else if(document.getElementById('sped').checked) {
         zoneNum = "NA";
         scenario = "sped";
-        schoolKey = "1GF6y4VF4b4hNXrxoAZoF6zOZ52-T-qQL38_tN4I";
+        schoolKey = "1L890nKUe8-INk4FnG8C1-kH_9tfS4OylLG7vRYc";
         zoneKey = "1BLm4bd-ejBBT8PtOu9lanCjCIZcCCY_c14059mg";
 
     } else if (document.getElementById('sixZ').checked) {
         zoneNum = "six";
         scenario = "gened";
-        schoolKey = "1AV4_hj723YiObXhv5d2PdGnDlH3_ysq2gVGp1hU";
+        schoolKey = "1MGOu4r5WXL_r9iBtlJxZNVq_KHC4LmG__Fn40qM";
         zoneKey = "1JouUBlL3ZlGC8TAsRXEPeqQyrmIMx3acgdO-Jo0";
 
     } else if (document.getElementById('nineZ').checked) {
         zoneNum = "nine";
         scenario = "gened";
-        schoolKey = "1EOZf1FjWlLKft-oERgBsKf_3ogzlo3uTsMRJGGA";
+        schoolKey = "1DBL_nl9hmygd_CkKTR4S44KlYU4AOsLlUxt72eY";
         zoneKey = "1gqE8zik8SGPUGo5TeVPrlPgD23ZrWwL6Q5bJfnU";
 
     } else if (document.getElementById('elevenZ').checked) {
         zoneNum = "eleven";
         scenario = "gened";
-        schoolKey = "1LXQGhAElMMZevDienkwggWcp6EhVoog6-APu3aE";
+        schoolKey = "1r0MxyLEGJTGANkmpD3hZWJLpvTidrYkwVDVISjw";
         zoneKey = "1i6CgHn4CNukzT_AcNJUoBcS7PgxWFE4kCQTPbU8";
+    } else if (document.getElementById('msz').checked) {
+        zoneNum = "NA";
+        scenario = "msz";
+        schoolKey = "1miHSJyO1iXQi_CI0bPv-n25lbUrR1qb75wwrNtw";
+        zoneKey = "18bfX8IzK9VEjRU1Qm66mvRoMJtNcuIvPXPAYSpE";
     }
 
     console.log("scenario = " + scenario + ", zones = " + zoneNum);
@@ -255,19 +261,20 @@ function queryForZone(addrLatLng) {
             select: 'geometry',
             from: zoneKey
         },
-        styles: [{
-            polygonOptions: {
-                fillColor: "#d5d4a6",
-                fillOpacity: 0.1
-            }
-        },{
-            where: 'Zone = '+ zoneQueryResult,
+        styles: [
+        {
+            where: 'Zone = ' + zoneQueryResult,
             polygonOptions: {
                 fillColor: "#facf8d",
                 fillOpacity: 0.2,
                 strokeColor: "#facf8d",
                 strokeOpacity: 0.8,
                 strokeWeight: 2
+            }
+        },{
+            polygonOptions: {
+                fillColor: "#d5d4a6",
+                fillOpacity: 0.1
             }
         }]
     });
@@ -303,7 +310,23 @@ function queryForSchool(addrLatLng, zoneQueryResult) {
         query3.send(queryType3);
         query4.send(queryType4);
 
-    } else {  // General Education
+    }else if (scenario === 'msz') {
+        var schoolQueryZone =
+            'select geometry, SCHOOL_NAM, SCH_ID, GRADE_SPAN, FEEDS_INTO, SCHOOL_PRO from '
+                + schoolKey + ' ' + whereClause;
+        console.log(schoolQueryZone);
+
+        var query = new google.visualization.Query(gQueryUrl + encodeURIComponent(schoolQueryZone));
+
+        query.send(queryType1);
+        
+        var MSCitywideQuery = 'select geometry, SCHOOL_NAM, SCH_ID, GRADE_SPAN, FEEDS_INTO, SCHOOL_PRO ' +
+        'from 1D__5gaIU2SUA3zp3R7-ExFsRPZvmN-DaK8Utrec';
+        var query5 = new google.visualization.Query(gQueryUrl + encodeURIComponent(MSCitywideQuery));
+        query5.send(queryType5);
+
+    }
+     else {  // General Education
 
         var schoolQueryZone =
             'select geometry, SCHOOL_NAM, SCH_ID, GRADE_SPAN, FEEDS_INTO, SCHOOL_PRO from '
@@ -345,6 +368,9 @@ function queryType4(response) {
     getSchoolData(response, "charter");
 }
 
+function queryType5(response) {
+    getSchoolData(response, "mszcitywide");
+}
 
 function getSchoolData(response, queryType) {
     var dt = response.getDataTable();
@@ -418,11 +444,11 @@ function createMarker(point, info, queryType, id, name) {
 
     var iconURL;
 
-    if (queryType === 'zone') {
+    if (queryType === 'zone' || queryType === 'msz') {
         iconURL = 'icons/Zone_schoolicon.png';
     } else if (queryType === 'intersect'){
         iconURL = 'icons/Walkzone_schoolicon.png';
-    } else if (queryType === 'citywide'){
+    } else if (queryType === 'citywide'|| queryType === 'mszcitywide'){
         iconURL = 'icons/Citywide_schoolicon.png';
     } else if (queryType === 'charter'){
         iconURL = 'icons/Charter1_schoolicon.png';
@@ -464,10 +490,10 @@ function createMarker(point, info, queryType, id, name) {
         schoolMarker.setMap(map);
     }
 
-    google.maps.event.addListener(marker, 'click', function() {
+    google.maps.event.addListener(schoolMarker, 'click', function() {
         infoWindow.close();
         infoWindow.setContent(info);
-        infoWindow.open(map, marker);
+        infoWindow.open(map, schoolMarker);
     });
 }
 

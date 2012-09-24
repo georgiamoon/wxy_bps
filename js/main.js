@@ -90,6 +90,7 @@ function clearOverlays() {
     for (var i = 0; i < markers.length; i++) {
         markers[i].setMap(null);
     }
+    markers = [];
 }
 
 function codeAddress() {
@@ -97,14 +98,13 @@ function codeAddress() {
     var address = document.getElementById('address').value;
 
     if (!address || address === "") {
-        alert("Please enter a home address.");
+        alert("Please enter your home address.");
         return;
     }
 
-    if(markers.length > 0) {
+    if (markers.length > 0) {
         clearOverlays();
     }
-
 
     /*
 
@@ -139,7 +139,7 @@ function codeAddress() {
 
 
      */
-    if(document.getElementById('ell').checked) {
+    if (document.getElementById('ell').checked) {
         zoneNum = "NA";
         scenario = "ell";
         schoolKey = "1gbqKxbYQGNB8UaIzDVCX5yK1UFjU9hOCABXBAVE";
@@ -151,7 +151,7 @@ function codeAddress() {
         schoolKey = "1GF6y4VF4b4hNXrxoAZoF6zOZ52-T-qQL38_tN4I";
         zoneKey = "1BLm4bd-ejBBT8PtOu9lanCjCIZcCCY_c14059mg";
 
-    }else if (document.getElementById('sixZ').checked) {
+    } else if (document.getElementById('sixZ').checked) {
         zoneNum = "six";
         scenario = "gened";
         schoolKey = "1AV4_hj723YiObXhv5d2PdGnDlH3_ysq2gVGp1hU";
@@ -168,7 +168,6 @@ function codeAddress() {
         scenario = "gened";
         schoolKey = "1LXQGhAElMMZevDienkwggWcp6EhVoog6-APu3aE";
         zoneKey = "1i6CgHn4CNukzT_AcNJUoBcS7PgxWFE4kCQTPbU8";
-
     }
 
     console.log("scenario = " + scenario + ", zones = " + zoneNum);

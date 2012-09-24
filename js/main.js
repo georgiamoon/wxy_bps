@@ -457,6 +457,7 @@ function createMarker(point, info, queryType, id, name) {
         if (oldMarker._queryType === "zone" && schoolMarker._queryType === "intersect") {
             replaceMarker(oldMarker, schoolMarker);
             schoolMarker.setMap(map);
+            oldMarker.setMap(null);
         }
     } else {
         addMarker(schoolMarker);

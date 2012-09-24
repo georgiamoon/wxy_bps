@@ -245,6 +245,10 @@ function queryForZone(addrLatLng) {
 
     query.send(function getZoneData(response){
         var dt = response.getDataTable();
+        
+        if (dt.getNumberOfRows() === 0) {
+            console.log("Zone data returned 0 results!");    
+        }
         //console.log("DT: " + dt);
         //console.log("DT: " + JSON.stringify(dt));
 

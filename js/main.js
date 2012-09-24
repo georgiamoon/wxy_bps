@@ -516,7 +516,7 @@ function searchArray(arr, property, item, case_insensitive) {
     case_insensitive = (typeof(case_insensitive) === 'undefined' || case_insensitive) ? true : false;
     item = (case_insensitive) ? item.toLowerCase() : item;
 
-    while (low <= high) {
+    while (low <= high && finalIndex == -1) {
         mid = parseInt((low + high) / 2);
         element = (case_insensitive) ? arr[mid][property].toLowerCase() : arr[mid][property];
         if (element > item) {

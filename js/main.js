@@ -446,7 +446,7 @@ function createMarker(point, info, queryType, id, name) {
     };
 
     var schoolMarker = new google.maps.Marker(markerOpts);
-    schoolMaker._queryType = queryType;
+    schoolMarker._queryType = queryType;
 
     //TO DO
     //search markers to see if the id already exists
@@ -493,9 +493,9 @@ function addMarker(marker) {
     markers.push(marker);
     markers.sort(
         function sorter(a, b)  {
-            if (a.id.toLowerCase() > b.id.toLowerCase())  {
+            if (a.id > b.id)  {
                 return 1;
-            } else if (a.id.toLowerCase() < b.id.toLowerCase()) {
+            } else if (a.id < b.id) {
                 return -1;
             } else {
                 return 0;

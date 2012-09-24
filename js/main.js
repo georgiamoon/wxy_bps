@@ -479,7 +479,7 @@ function getMarkerById(id) {
 
 function replaceMarker(oldMarker, newMarker) {
     var index = markers.indexOf(oldMarker);
-    if (index > 0) {
+    if (index >= 0) {
         markers.splice(index, 1, newMarker);
     }
 }

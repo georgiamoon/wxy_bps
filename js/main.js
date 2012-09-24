@@ -129,8 +129,8 @@ function codeAddress() {
 
      middle school
      schools:
-     	MS: 1miHSJyO1iXQi_CI0bPv-n25lbUrR1qb75wwrNtw
-		MS-Citywide: 1D__5gaIU2SUA3zp3R7-ExFsRPZvmN-DaK8Utrec
+     	MS: 1EhwdUlpyI0IzKS6uQLq7r0ONEkgJs9fzALudOM4
+		MS-Citywide: 1KVj8USZ-lR06Yd-KWBSO5lBSypO-aEjpkCVtPvE
      zone: 18bfX8IzK9VEjRU1Qm66mvRoMJtNcuIvPXPAYSpE
 
      citywide schools
@@ -172,7 +172,7 @@ function codeAddress() {
     } else if (document.getElementById('msz').checked) {
         zoneNum = "NA";
         scenario = "msz";
-        schoolKey = "1miHSJyO1iXQi_CI0bPv-n25lbUrR1qb75wwrNtw";
+        schoolKey = "1EhwdUlpyI0IzKS6uQLq7r0ONEkgJs9fzALudOM4";
         zoneKey = "18bfX8IzK9VEjRU1Qm66mvRoMJtNcuIvPXPAYSpE";
     }
 
@@ -313,7 +313,7 @@ function queryForSchool(addrLatLng, zoneQueryResult) {
         query3.send(queryType3);
         query4.send(queryType4);
 
-    }else if (scenario === 'msz') {
+    } else if (scenario === 'msz') {
         var schoolQueryZone =
             'select geometry, SCHOOL_NAM, SCH_ID, GRADE_SPAN, FEEDS_INTO, SCHOOL_PRO from '
                 + schoolKey + ' ' + whereClause;
@@ -324,7 +324,7 @@ function queryForSchool(addrLatLng, zoneQueryResult) {
         query.send(queryType1);
         
         var MSCitywideQuery = 'select geometry, SCHOOL_NAM, SCH_ID, GRADE_SPAN, FEEDS_INTO, SCHOOL_PRO ' +
-        'from 1D__5gaIU2SUA3zp3R7-ExFsRPZvmN-DaK8Utrec';
+        'from 1KVj8USZ-lR06Yd-KWBSO5lBSypO-aEjpkCVtPvE';
         var query5 = new google.visualization.Query(gQueryUrl + encodeURIComponent(MSCitywideQuery));
         query5.send(queryType5);
 

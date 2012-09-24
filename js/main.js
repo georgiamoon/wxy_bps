@@ -439,7 +439,7 @@ function createMarker(point, info, queryType, id, name) {
         id: id,
         cursor: name,
         position: point,
-        map: map,
+        //map: map,
         icon: myIcon,
         shape: markerShape
     };
@@ -454,11 +454,13 @@ function createMarker(point, info, queryType, id, name) {
     // walk zone should be shown as walk zone, rather than zone if it is also a zone school
     var oldMarker = getMarkerById(id);
     if (oldMarker) {
-        if (oldMarker._queryType === "intersect" && schoolMarker._queryType === "zone") {
+        if (oldMarker._queryType === "zone" && schoolMarker._queryType === "intersect") {
             replaceMarker(oldMarker, schoolMarker);
+            schoolMarker.setMap(map);
         }
     } else {
         addMarker(schoolMarker);
+        schoolMarker.setMap(map);
     }
 
     google.maps.event.addListener(marker, 'click', function() {

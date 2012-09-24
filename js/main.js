@@ -420,7 +420,7 @@ function getSchoolData(response, queryType) {
         var html = "<strong>" + name + "</strong><br/><br/>" +
             grades+ "<br/><em>Feeds Into: </em>" +
             feeder+ "<br/>" +
-            link.link(link);;
+            "<a href=" + link + " target=\"_blank\">"+link+ "</a>";
 
         /*side_html += '<tr> \
          <td><a href="javascript:myclick(' + i + ')">' + name + '</a></td> \

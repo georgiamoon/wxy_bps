@@ -252,34 +252,37 @@ function queryForZone(addrLatLng) {
             zoneQueryResult = dt.getValue(i, 0);
             console.log("zoneResult = "+ zoneQueryResult);
             queryForSchool(addrLatLng, zoneQueryResult);
+            
+            var where = "Zone = " + zoneQueryResult;
+			console.log("zoneWhere = " + where);
+		
+		    zoneLayer = new google.maps.FusionTablesLayer({
+		        suppressInfoWindows: true,
+		        query: {
+		            select: 'geometry',
+		            from: zoneKey
+		        },
+		        styles: [
+		        {
+		            polygonOptions: {
+		                fillColor: "#d5d4a6",
+		                fillOpacity: 0.1
+		            }
+		        },{
+		            where: where,
+		            polygonOptions: {
+		                fillColor: "#facf8d",
+		                fillOpacity: 0.3,
+		                strokeColor: "#facf8d",
+		                strokeOpacity: 0.8,
+		                strokeWeight: 3
+		            }
+		        }]
+		    });
+		    zoneLayer.setMap(map);
+		    console.log("zone layer set");
         }
     });
-
-    zoneLayer = new google.maps.FusionTablesLayer({
-        suppressInfoWindows: true,
-        query: {
-            select: 'geometry',
-            from: zoneKey
-        },
-        styles: [
-        {
-            where: 'Zone = ' + zoneQueryResult,
-            polygonOptions: {
-                fillColor: "#facf8d",
-                fillOpacity: 0.2,
-                strokeColor: "#facf8d",
-                strokeOpacity: 0.8,
-                strokeWeight: 2
-            }
-        },{
-            polygonOptions: {
-                fillColor: "#d5d4a6",
-                fillOpacity: 0.1
-            }
-        }]
-    });
-    zoneLayer.setMap(map);
-    console.log("zone layer set");
 
 
 } // end queryForZone
@@ -361,11 +364,11 @@ function queryType2(response) {
 }
 
 function queryType3(response) {
-    getSchoolData(response, "citywide");
+    getSchoolData(response, "charter");
 }
 
 function queryType4(response) {
-    getSchoolData(response, "charter");
+    getSchoolData(response, "citywide");
 }
 
 function queryType5(response) {

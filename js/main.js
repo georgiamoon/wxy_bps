@@ -181,10 +181,9 @@ function codeAddress() {
     geocoder.geocode( {'address': address, 'bounds':bounds}, function(results, status) {
         console.log("geocoding response = "+ results);
 
-        if (status == google.maps.GeocoderStatus.OK) {
+        if (status === google.maps.GeocoderStatus.OK) {
             var addrLatLng = results[0].geometry.location;
             queryForZone(addrLatLng);
-            console.log(addrLatLng);
 
             if (marker) {
                 marker.setMap(null);
@@ -200,6 +199,8 @@ function codeAddress() {
                 });
             }
 
+        } else if (status == google.maps.GeocoderStatus.ZERO_RESULTS) {
+            alert('The address "' + address + '" could not be found.');
         } else {
             alert('Geocode was not successful for the following reason: ' + status);
         }

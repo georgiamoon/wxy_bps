@@ -11,7 +11,6 @@ var geocoder;
 var marker;
 var zoneLayer;
 var zoneKey;
-var specialZone;
 var bostonLayer;
 var schoolLayerResults;
 var schoolKey;
@@ -96,9 +95,17 @@ function clearOverlays() {
 function codeAddress() {
 
     var address = document.getElementById('address').value;
-    //console.log("markers pre = " + markers.length);
-    if(markers.length > 0){ clearOverlays();}
-    //console.log("markers post = " + markers.length);
+
+    if (!address || address === "") {
+        alert("Please enter a home address.");
+        return;
+    }
+
+    if(markers.length > 0) {
+        clearOverlays();
+    }
+
+
     /*
 
      SCENARIO - 6
@@ -166,12 +173,11 @@ function codeAddress() {
 
     console.log("scenario = " + scenario + ", zones = " + zoneNum);
 
-    console.log(address);
-    if (address === null) {
-        return;
-    }
+    // bounding box around the city
+    var bounds = new google.maps.LatLngBounds(
+        new google.maps.LatLng(42.231, -71.244),
+        new google.maps.LatLng(42.402, -70.953));
 
-    var bounds = new google.maps.LatLngBounds(new google.maps.LatLng(42.231, -71.244), new google.maps.LatLng(42.402, -70.953))
     geocoder.geocode( {'address': address, 'bounds':bounds}, function(results, status) {
         console.log("geocoding response = "+ results);
 
@@ -277,8 +283,10 @@ function queryForSchool(addrLatLng, zoneQueryResult) {
     var whereClauseIntersect = 'WHERE ST_INTERSECTS(geometry, CIRCLE( LATLNG('
         + addrLatLng.Xa + ', ' + addrLatLng.Ya + '), 1200))';
 
-    var charterQuery = 'select geometry, SCHOOL_NAM, SCH_ID, GRADE_SPAN, FEEDS_INTO, SCHOOL_PRO from 13vio8J9tcoSzNfLil8R8pymcL5TZ-1sJuvLhz9c';
-    var citywideQuery = 'select geometry, SCHOOL_NAM, SCH_ID, GRADE_SPAN, FEEDS_INTO, SCHOOL_PRO from 1U4deSKE-VyXpNwjpsIyCKaemTJaqJXfvszT7Bq8';
+    var charterQuery = 'select geometry, SCHOOL_NAM, SCH_ID, GRADE_SPAN, FEEDS_INTO, SCHOOL_PRO ' +
+        'from 13vio8J9tcoSzNfLil8R8pymcL5TZ-1sJuvLhz9c';
+    var citywideQuery = 'select geometry, SCHOOL_NAM, SCH_ID, GRADE_SPAN, FEEDS_INTO, SCHOOL_PRO ' +
+        'from 1U4deSKE-VyXpNwjpsIyCKaemTJaqJXfvszT7Bq8';
 
     var query3 = new google.visualization.Query(gQueryUrl + encodeURIComponent(charterQuery));
     var query4 = new google.visualization.Query(gQueryUrl + encodeURIComponent(citywideQuery));
@@ -403,49 +411,122 @@ function getSchoolData(response, queryType) {
 
 function createMarker(point, info, queryType, id, name) {
 
-    if(queryType === 'zone'){ var iconURL = 'icons/Zone_schoolicon.png';}
-    else if(queryType === 'intersect'){var iconURL = 'icons/Walkzone_schoolicon.png';}
-    else if(queryType === 'citywide'){var iconURL = 'icons/Citywide_schoolicon.png';}
-    else if(queryType === 'charter'){var iconURL = 'icons/Charter1_schoolicon.png';}
     var iconSize = new google.maps.Size(20, 34);
     var iconOrigin = new google.maps.Point(0, 0);
     var iconAnchor = new google.maps.Point(10, 34);
+    var iconShape = [8, 33, 4, 15, 1, 15, 0, 12, 0, 5, 6, 0, 12, 0, 19, 14, 15, 15, 10, 33];
+
+    var iconURL;
+
+    if (queryType === 'zone') {
+        iconURL = 'icons/Zone_schoolicon.png';
+    } else if (queryType === 'intersect'){
+        iconURL = 'icons/Walkzone_schoolicon.png';
+    } else if (queryType === 'citywide'){
+        iconURL = 'icons/Citywide_schoolicon.png';
+    } else if (queryType === 'charter'){
+        iconURL = 'icons/Charter1_schoolicon.png';
+    }
 
     var myIcon = new google.maps.MarkerImage(iconURL, iconSize, iconOrigin, iconAnchor);
 
-    var iconShape = [8, 33, 4, 15, 1, 15, 0, 12, 0, 5, 6, 0, 12, 0, 19, 14, 15, 15, 10, 33];
-    var myMarkerShape = {
+    var markerShape = {
         coord: iconShape,
         type: 'poly'
     };
 
-    var myMarkerOpts = {
+    var markerOpts = {
         id: id,
         cursor: name,
         position: point,
         map: map,
         icon: myIcon,
-        shape: myMarkerShape
+        shape: markerShape
     };
 
-    var sch_marker = new google.maps.Marker(myMarkerOpts);
+    var schoolMarker = new google.maps.Marker(markerOpts);
+    schoolMaker._queryType = queryType;
 
     //TO DO
     //search markers to see if the id already exists
     //display order - citywide, charter, walk zone, zone
     //citywide & charter will be from their own files and shouldn't be an issue
     // walk zone should be shown as walk zone, rather than zone if it is also a zone school
-    markers.push(sch_marker);
+    var oldMarker = getMarkerById(id);
+    if (oldMarker) {
+        if (oldMarker._queryType === "intersect" && schoolMarker._queryType === "zone") {
+            replaceMarker(oldMarker, schoolMarker);
+        }
+    } else {
+        addMarker(schoolMarker);
+    }
 
     google.maps.event.addListener(marker, 'click', function() {
         infoWindow.close();
         infoWindow.setContent(info);
-        infoWindow.open(map,marker);
+        infoWindow.open(map, marker);
     });
 }
 
 function myclick(num) {
     google.maps.event.trigger(markers[num], "click");
     map.setCenter(markers[num].position);
+}
+
+function getMarkerById(id) {
+    return searchArray(markers, "id", id, false);
+}
+
+function replaceMarker(oldMarker, newMarker) {
+    var index = markers.indexOf(oldMarker);
+    if (index > 0) {
+        markers.splice(index, 1, newMarker);
+    }
+}
+
+function addMarker(marker) {
+    if (!markers) {
+        return;
+    }
+
+    markers.push(marker);
+    markers.sort(
+        function sorter(a, b)  {
+            if (a.id.toLowerCase() > b.id.toLowerCase())  {
+                return 1;
+            } else if (a.id.toLowerCase() < b.id.toLowerCase()) {
+                return -1;
+            } else {
+                return 0;
+            }
+        }
+    );
+
+}
+
+// binary search by property on an array of objects with support for case sensitivity
+function searchArray(arr, property, item, case_insensitive) {
+    if (typeof(arr) === 'undefined' || !arr.length) return null;
+
+    var high = arr.length - 1;
+    var low = 0,
+        finalIndex = -1;
+
+    case_insensitive = (typeof(case_insensitive) === 'undefined' || case_insensitive) ? true : false;
+    item = (case_insensitive) ? item.toLowerCase() : item;
+
+    while (low <= high) {
+        mid = parseInt((low + high) / 2);
+        element = (case_insensitive) ? arr[mid][property].toLowerCase() : arr[mid][property];
+        if (element > item) {
+            high = mid - 1;
+        } else if (element < item) {
+            low = mid + 1;
+        } else {
+            finalIndex = mid;
+        }
+    }
+
+    return (finalIndex >= 0) ? arr[finalIndex] : null;
 }
 

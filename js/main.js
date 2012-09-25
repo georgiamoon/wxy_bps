@@ -1,5 +1,9 @@
 /**
  * Main map interaction code.
+ *
+ *
+ * Created by Georgia Bullen & Bryan Valentini 
+ * @georgiamoon & @transistorize on github
  */
 
 google.load('visualization', '1', {'packages': ['table']});
@@ -58,7 +62,7 @@ function initialize() {
 
     var mapOptions = {
         center: boston,
-        zoom: 12,
+        zoom: 11,
         mapTypeControlOptions: { mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'Boston Public Schools']}
     };
 
@@ -82,7 +86,7 @@ function initialize() {
         }]
     });
     bostonLayer.setMap(map);
-    console.log("boston boundaries");
+    //console.log("boston boundaries");
 
 }
 
@@ -117,7 +121,11 @@ function codeAddress() {
 
      SCENARIO - 11
      schools: 1r0MxyLEGJTGANkmpD3hZWJLpvTidrYkwVDVISjw
-     zone: 1i6CgHn4CNukzT_AcNJUoBcS7PgxWFE4kCQTPbU8
+     zone: 1C5rRLFGtp2J92GcBGEFgnwV4p2__FYHcut9i-es
+     
+     SCENARIO - 23
+     schools: 1q_tyGoZXf6aej56HesF01IPTxCWZWuU7RSgDbyk
+     zone: 1C_NT3Q5oKHkSHhZjb7GrJkg1mFKa-vvSdSKPJnQ
 
      ell
      schools: 1Wxlq5oKcKWt5HdlZMnaSc5SbXc_rEz3Abyz7eEQ
@@ -130,7 +138,7 @@ function codeAddress() {
      middle school
      schools:
      	MS: 1EhwdUlpyI0IzKS6uQLq7r0ONEkgJs9fzALudOM4
-		MS-Citywide: 1KVj8USZ-lR06Yd-KWBSO5lBSypO-aEjpkCVtPvE
+		MS-Citywide: 191UgsAb8rLsfxSTmNnQRGrWZ1CF_utOd-RX2Jl4
      zone: 18bfX8IzK9VEjRU1Qm66mvRoMJtNcuIvPXPAYSpE
 
      citywide schools
@@ -168,7 +176,14 @@ function codeAddress() {
         zoneNum = "eleven";
         scenario = "gened";
         schoolKey = "1r0MxyLEGJTGANkmpD3hZWJLpvTidrYkwVDVISjw";
-        zoneKey = "1i6CgHn4CNukzT_AcNJUoBcS7PgxWFE4kCQTPbU8";
+        zoneKey = "1C5rRLFGtp2J92GcBGEFgnwV4p2__FYHcut9i-es";
+        
+    } else if (document.getElementById('twentythreeZ').checked) {
+        zoneNum = "twentythree";
+        scenario = "gened";
+        schoolKey = "1q_tyGoZXf6aej56HesF01IPTxCWZWuU7RSgDbyk";
+        zoneKey = "1C_NT3Q5oKHkSHhZjb7GrJkg1mFKa-vvSdSKPJnQ";
+        
     } else if (document.getElementById('msz').checked) {
         zoneNum = "NA";
         scenario = "msz";
@@ -176,7 +191,7 @@ function codeAddress() {
         zoneKey = "18bfX8IzK9VEjRU1Qm66mvRoMJtNcuIvPXPAYSpE";
     }
 
-    console.log("scenario = " + scenario + ", zones = " + zoneNum);
+   // console.log("scenario = " + scenario + ", zones = " + zoneNum);
 
     // bounding box around the city
     var bounds = new google.maps.LatLngBounds(
@@ -184,7 +199,7 @@ function codeAddress() {
         new google.maps.LatLng(42.402, -70.953));
 
     geocoder.geocode( {'address': address, 'bounds':bounds}, function(results, status) {
-        console.log("geocoding response = "+ results);
+        //console.log("geocoding response = "+ results);
 
         if (status === google.maps.GeocoderStatus.OK) {
             var addrLatLng = results[0].geometry.location;
@@ -197,7 +212,7 @@ function codeAddress() {
 
             if (marker == null || marker === undefined) {
                 map.setCenter(addrLatLng);
-                map.setZoom(13);
+                map.setZoom(12);
                 marker = new google.maps.Marker({
                     map: map,
                     position: addrLatLng
@@ -217,19 +232,19 @@ function clearMapLayers() {
     if (bostonLayer) {
         bostonLayer.setMap(null);
         bostonLayer = null;
-        console.log("Initial Boston Layer cleared")
+        //console.log("Initial Boston Layer cleared")
     }
 
     if (schoolLayerResults) {
         schoolLayerResults.setMap(null);
         schoolLayerResults = null;
-        console.log("School Layer Results cleared");
+        //console.log("School Layer Results cleared");
     }
 
     if (zoneLayer) {
         zoneLayer.setMap(null);
         zoneLayer = null;
-        console.log("Zone Layer cleared");
+        //console.log("Zone Layer cleared");
     }
 }
 
@@ -254,11 +269,11 @@ function queryForZone(addrLatLng) {
 
         for (var i = 0; i < dt.getNumberOfRows(); i++) {
             zoneQueryResult = dt.getValue(i, 0);
-            console.log("zoneResult = "+ zoneQueryResult);
+            //console.log("zoneResult = "+ zoneQueryResult);
             queryForSchool(addrLatLng, zoneQueryResult);
             
             var where = "Zone = " + zoneQueryResult;
-			console.log("zoneWhere = " + where);
+			//console.log("zoneWhere = " + where);
 		
 		    zoneLayer = new google.maps.FusionTablesLayer({
 		        suppressInfoWindows: true,
@@ -275,16 +290,16 @@ function queryForZone(addrLatLng) {
 		        },{
 		            where: where,
 		            polygonOptions: {
-		                fillColor: "#facf8d",
+		                fillColor: "#ffff66",
 		                fillOpacity: 0.3,
-		                strokeColor: "#facf8d",
+		                strokeColor: "#ffff66",
 		                strokeOpacity: 0.8,
 		                strokeWeight: 3
 		            }
 		        }]
 		    });
 		    zoneLayer.setMap(map);
-		    console.log("zone layer set");
+		    //console.log("zone layer set");
         }
     });
 
@@ -309,7 +324,7 @@ function queryForSchool(addrLatLng, zoneQueryResult) {
         var schoolQueryZone =
             'select geometry, SCHOOL_NAM, SCH_ID, GRADE_SPAN, FEEDS_INTO, SCHOOL_PRO from '
                 + schoolKey + ' ' + whereClause;
-        console.log(schoolQueryZone);
+        //console.log(schoolQueryZone);
 
         var query = new google.visualization.Query(gQueryUrl + encodeURIComponent(schoolQueryZone));
 
@@ -317,18 +332,19 @@ function queryForSchool(addrLatLng, zoneQueryResult) {
         query3.send(queryType3);
         query4.send(queryType4);
 
-    } else if (scenario === 'msz') {
+    }
+    if (scenario === 'msz') {
         var schoolQueryZone =
-            'select geometry, SCHOOL_NAM, SCH_ID, GRADE_SPAN, FEEDS_INTO, SCHOOL_PRO from '
+            'select geometry, SCHL_NAME, SCHL_ID, GRADE_SPAN, SCHOOL_PRO from '
                 + schoolKey + ' ' + whereClause;
-        console.log(schoolQueryZone);
+        //console.log("msz query = " + schoolQueryZone);
 
-        var query = new google.visualization.Query(gQueryUrl + encodeURIComponent(schoolQueryZone));
+        var query6 = new google.visualization.Query(gQueryUrl + encodeURIComponent(schoolQueryZone));
 
-        query.send(queryType1);
+        query6.send(queryType6);
         
-        var MSCitywideQuery = 'select geometry, SCHOOL_NAM, SCH_ID, GRADE_SPAN, FEEDS_INTO, SCHOOL_PRO ' +
-        'from 1KVj8USZ-lR06Yd-KWBSO5lBSypO-aEjpkCVtPvE';
+        var MSCitywideQuery = 'select geometry, SCHL_NAME, SCHL_ID, GRADE_SPAN, SCHOOL_PRO ' +
+        'from 191UgsAb8rLsfxSTmNnQRGrWZ1CF_utOd-RX2Jl4';
         var query5 = new google.visualization.Query(gQueryUrl + encodeURIComponent(MSCitywideQuery));
         query5.send(queryType5);
 
@@ -338,7 +354,7 @@ function queryForSchool(addrLatLng, zoneQueryResult) {
         var schoolQueryZone =
             'select geometry, SCHOOL_NAM, SCH_ID, GRADE_SPAN, FEEDS_INTO, SCHOOL_PRO from '
                 + schoolKey + ' ' + whereClause;
-        console.log(schoolQueryZone);
+        //console.log(schoolQueryZone);
 
         var query = new google.visualization.Query(gQueryUrl + encodeURIComponent(schoolQueryZone));
 
@@ -346,7 +362,7 @@ function queryForSchool(addrLatLng, zoneQueryResult) {
         var schoolQueryIntersect =
             'select geometry, SCHOOL_NAM, SCH_ID, GRADE_SPAN, FEEDS_INTO, SCHOOL_PRO from '
                 + schoolKey + ' ' + whereClauseIntersect;
-        console.log(schoolQueryIntersect);
+        //console.log(schoolQueryIntersect);
 
         var query2 = new google.visualization.Query(gQueryUrl + encodeURIComponent(schoolQueryIntersect));
 
@@ -377,6 +393,10 @@ function queryType4(response) {
 
 function queryType5(response) {
     getSchoolData(response, "mszcitywide");
+}
+
+function queryType6(response) {
+    getSchoolData(response, "msz");
 }
 
 function getSchoolData(response, queryType) {
@@ -413,19 +433,36 @@ function getSchoolData(response, queryType) {
 
         var lat = latlng.Xa;
         var lng = latlng.Ya;
-        var name = dt.getValue(i, 1);
-        var id = dt.getValue(i, 2);
-        var grades = dt.getValue(i, 3);
-        var feeder = dt.getValue(i, 4);
-        var link = dt.getValue(i, 5);
-
+       
+       if(queryType === 'msz' || queryType === 'mszcitywide'){
+			var name = dt.getValue(i, 1);
+	        var id = dt.getValue(i, 2);
+	        var grades = dt.getValue(i, 3);
+	        var link = dt.getValue(i, 4);
+	        
+	        var html = "<strong>" + name + "</strong><br/><br/>" +
+	            grades+ "<br/> " +
+	            "<a href=" + link + " target=\"_blank\">"+link+ "</a>";
+	        
+       } else {
+	        var name = dt.getValue(i, 1);
+	        var id = dt.getValue(i, 2);
+	        var grades = dt.getValue(i, 3);
+	        
+	        if(dt.getValue(i,4)) { var feeder = dt.getValue(i, 4);}
+	        else {var feeder = "N/A";}
+	        
+	        var link = dt.getValue(i, 5);
+	        
+	        var html = "<strong>" + name + "</strong><br/><br/>" +
+	            grades+ "<br/><em>Feeds Into: </em>" +
+	            feeder+ "<br/>" +
+	            "<a href=" + link + " target=\"_blank\">"+link+ "</a>";
+		        
+		}
         var pt = new google.maps.LatLng(lat, lng);
 
-        var html = "<strong>" + name + "</strong><br/><br/>" +
-            grades+ "<br/><em>Feeds Into: </em>" +
-            feeder+ "<br/>" +
-            "<a href=" + link + " target=\"_blank\">"+link+ "</a>";
-
+        
         /*side_html += '<tr> \
          <td><a href="javascript:myclick(' + i + ')">' + name + '</a></td> \
          <td>' + grades + '</td> \

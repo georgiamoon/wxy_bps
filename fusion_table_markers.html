@@ -60,7 +60,6 @@
     form {
       display: inline-block;
       position: relative;
-      width: 40%;
       float: none;
     }
 
@@ -81,25 +80,28 @@
 </head>
 <body onload="initialize()">
 <div style="float:left;">
-  <div id="instructions">Enter an address and select which kind of map you would like to explore.
-    Schools within a home zone will be blue, and schools within a walk zone will be red. (Even if a
-    red school is outside of the home zone, a family at that address could still apply to it.)<br/>
+  <div id="instructions">BPS is asking for your feedback on these new school choice models, which we could use in the future for General Education students, English Language Learners and Students With Disabilities. Select a model option below and enter an address to explore on the interactive map.
+    Schools within a Home Zone will be blue, and schools within a Walk Zone will be pink. (Even if a
+    pink school is outside of the Home Zone, a family at that address could still apply to it.)<br/>
     <br/>
     Clicking on a school will show you which middle school it would feed into, when applicable.<br/>
     <br/>
-    BPS will also offer citywide options outside of a Home Zone: a student in any part of the city
+    BPS will also offer citywide options outside of a Home Zone and Walk Zone: a student in any part of the city
     could apply to UP Academy, Dudley Street Neighborhood Charter School, and Hernández
-    K-8.<br/><br/></div>
+    K-8.<br/>
+    <br/>
+    Please note: The ‘no-zone’ option is not displayed here because under that model, students would be assigned to nearby schools and the system would no longer use zones.<br/><br/></div>
 
   <form id="scenario" style="width=60px;">
     <fieldset>
-      <legend><strong>Map Options:</strong></legend>
-      <input type="radio" name="zoneKey" id="sixZ" checked="checked"/> 6 Zones, General Education<br/>
-      <input type="radio" name="zoneKey" id="nineZ"/> 9 Zones, General Education<br/>
-      <input type="radio" name="zoneKey" id="elevenZ"/> 11 Zones, General Education<br/>
+      <legend><strong>Select Model Option: <a href="http://bostonschoolchoice.org/home-2/explore-the-proposals/" target="_blank">(Click for more information)</a></strong></legend>
+      <input type="radio" name="zoneKey" id="sixZ" checked="checked"/> 6 Home Zones, General Education<br/>
+      <input type="radio" name="zoneKey" id="nineZ"/> 9 Home Zones, General Education<br/>
+      <input type="radio" name="zoneKey" id="elevenZ"/> 11 Home Zones, General Education<br/>
+      <input type="radio" name="zoneKey" id="twentythreeZ"/> 23 Home Zones, General Education<br/>
       <input type="radio" name="zoneKey" id="sped"/> Students with Disabilities<br/>
       <input type="radio" name="zoneKey" id="ell"/> English Language Learners<br/>
-      <input type="radio" name="zoneKey" id="msz"/> Middle School Zones<br/>
+      <input type="radio" name="zoneKey" id="msz"/> Middle School Home Zones<br/>
     </fieldset>
   </form>
   <br/>
@@ -110,15 +112,20 @@
       type="button" value="Go!" onclick="codeAddress()"><br/></div>
 </div>
 <div id="legend"><br/><strong>School Key:</strong><br/>
-	<img src="icons/Walkzone_schoolicon.png"> Within your Walk Zone 
-	<img src="icons/Zone_schoolicon.png"> Within your Zone
-	<img src="icons/Charter1_schoolicon.png"> BPS Charter School <br/>
-	<img src="icons/Citywide_schoolicon.png">BPS Citywide School
-	<span style="background:#facf8d;">&#160;&#160;&#160;&#160;&#160;</span> Your Home Zone Boundaries 
-	<span style="background:#d5d4a6;">&#160;&#160;&#160;&#160;&#160;</span> All other Zones 
+<table border="0">
+<tr>
+  <td><img src="icons/Walkzone_schoolicon.png">&#160;School within your Walk Zone</td>
+  <td><img src="icons/Zone_schoolicon.png">&#160;School within your Home Zone</td>
+  <td><span style="background:#ffff66;">&#160;&#160;&#160;&#160;&#160;</span>&#160;Your Home Zone Boundaries</td>
+</tr>
+<tr>
+  <td><img src="icons/Citywide_schoolicon.png">&#160;BPS Citywide school</td>
+  <td><img src="icons/Charter1_schoolicon.png">&#160;BPS charter school</td>
+  <td><span style="background:#d5d4a6;">&#160;&#160;&#160;&#160;&#160;</span>&#160;All other Home Zones</td>
+</tr>
+</table>
 </div>
-<br/><br/>
-<div id="map_canvas" style="width: 800px; height: 600px; position: relative; left: 10px"></div>
+<div id="map_canvas" style="width: 600px; height: 500px; position: relative; left: 10px"></div>
 <div id="side_bar" style="width: 200px; height: 600px; position: relative; left: 830px; overflow: auto;"></div>
 </body>
 </html>

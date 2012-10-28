@@ -191,7 +191,7 @@ function codeAddress() {
         zoneKey = "18bfX8IzK9VEjRU1Qm66mvRoMJtNcuIvPXPAYSpE";
     }
 
-    //console.log("scenario = " + scenario + ", zones = " + zoneNum);
+    console.log("scenario = " + scenario + ", zones = " + zoneNum);
 
     // bounding box around the city
     var bounds = new google.maps.LatLngBounds(
@@ -199,7 +199,7 @@ function codeAddress() {
         new google.maps.LatLng(42.402, -70.953));
 
     geocoder.geocode( {'address': address, 'bounds':bounds}, function(results, status) {
-       // console.log("geocoding response = "+ results);
+        console.log("geocoding response = "+ results);
 
         if (status === google.maps.GeocoderStatus.OK) {
             var addrLatLng = results[0].geometry.location;
@@ -238,13 +238,13 @@ function clearMapLayers() {
     if (schoolLayerResults) {
         schoolLayerResults.setMap(null);
         schoolLayerResults = null;
-        //console.log("School Layer Results cleared");
+        console.log("School Layer Results cleared");
     }
 
     if (zoneLayer) {
         zoneLayer.setMap(null);
         zoneLayer = null;
-        //console.log("Zone Layer cleared");
+        console.log("Zone Layer cleared");
     }
 }
 
@@ -262,18 +262,17 @@ function queryForZone(addrLatLng) {
         var dt = response.getDataTable();
         
         if (dt.getNumberOfRows() === 0) {
-            //console.log("Zone data returned 0 results!");    
+            console.log("Zone data returned 0 results!");    
         }
         //console.log("DT: " + dt);
         //console.log("DT: " + JSON.stringify(dt));
 
-        for (var i = 0; i < dt.getNumberOfRows(); i++) {
-            zoneQueryResult = dt.getValue(i, 0);
-            //console.log("zoneResult = "+ zoneQueryResult);
+            zoneQueryResult = dt.getValue(0, 0);
+            console.log("zoneResult = "+ zoneQueryResult);
             queryForSchool(addrLatLng, zoneQueryResult);
             
             var where = "Zone = " + zoneQueryResult;
-			//console.log("zoneWhere = " + where);
+			console.log("zoneWhere = " + where);
 		
 		    zoneLayer = new google.maps.FusionTablesLayer({
 		        suppressInfoWindows: true,
@@ -299,8 +298,7 @@ function queryForZone(addrLatLng) {
 		        }]
 		    });
 		    zoneLayer.setMap(map);
-		    //console.log("zone layer set");
-        }
+		    //console.log("zone layer set");  
     });
 
 
@@ -310,7 +308,7 @@ function queryForSchool(addrLatLng, zoneQueryResult) {
 
     var whereClause = 'WHERE Zone = ' + zoneQueryResult;
     var whereClauseIntersect = 'WHERE ST_INTERSECTS(geometry, CIRCLE( LATLNG('
-        + addrLatLng.Xa + ', ' + addrLatLng.Ya + '), 1200))';
+        + addrLatLng.Xa + ', ' + addrLatLng.Ya + '), 1207.01))';
 
     var charterQuery = 'select geometry, SCHOOL_NAM, SCH_ID, GRADE_SPAN, FEEDS_INTO, SCHOOL_PRO ' +
         'from 13vio8J9tcoSzNfLil8R8pymcL5TZ-1sJuvLhz9c';
@@ -324,7 +322,7 @@ function queryForSchool(addrLatLng, zoneQueryResult) {
         var schoolQueryZone =
             'select geometry, SCHOOL_NAM, SCH_ID, GRADE_SPAN, FEEDS_INTO, SCHOOL_PRO from '
                 + schoolKey + ' ' + whereClause;
-        //console.log(schoolQueryZone);
+        console.log(schoolQueryZone);
 
         var query = new google.visualization.Query(gQueryUrl + encodeURIComponent(schoolQueryZone));
 
@@ -337,7 +335,7 @@ function queryForSchool(addrLatLng, zoneQueryResult) {
         var schoolQueryZone =
             'select geometry, SCHL_NAME, SCHL_ID, GRADE_SPAN, SCHOOL_PRO from '
                 + schoolKey + ' ' + whereClause;
-        //console.log("msz query = " + schoolQueryZone);
+        console.log("msz query = " + schoolQueryZone);
 
         var query6 = new google.visualization.Query(gQueryUrl + encodeURIComponent(schoolQueryZone));
 
@@ -354,7 +352,7 @@ function queryForSchool(addrLatLng, zoneQueryResult) {
         var schoolQueryZone =
             'select geometry, SCHOOL_NAM, SCH_ID, GRADE_SPAN, FEEDS_INTO, SCHOOL_PRO from '
                 + schoolKey + ' ' + whereClause;
-        //console.log(schoolQueryZone);
+        console.log(schoolQueryZone);
 
         var query = new google.visualization.Query(gQueryUrl + encodeURIComponent(schoolQueryZone));
 
@@ -362,7 +360,7 @@ function queryForSchool(addrLatLng, zoneQueryResult) {
         var schoolQueryIntersect =
             'select geometry, SCHOOL_NAM, SCH_ID, GRADE_SPAN, FEEDS_INTO, SCHOOL_PRO from '
                 + schoolKey + ' ' + whereClauseIntersect;
-        //console.log(schoolQueryIntersect);
+        console.log(schoolQueryIntersect);
 
         var query2 = new google.visualization.Query(gQueryUrl + encodeURIComponent(schoolQueryIntersect));
 

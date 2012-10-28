@@ -254,7 +254,7 @@ function queryForZone(addrLatLng) {
 
     var zoneQuery = 'select Zone from ' + zoneKey
         + ' where ST_INTERSECTS(geometry, CIRCLE( LATLNG('
-        + addrLatLng.Xa + ', ' + addrLatLng.Ya + '), 0.1))';
+        + addrLatLng.lat() + ', ' + addrLatLng.lng() + '), 0.1))';
 
     var query = new google.visualization.Query(gQueryUrl + encodeURIComponent(zoneQuery));
 
@@ -267,8 +267,8 @@ function queryForZone(addrLatLng) {
         //console.log("DT: " + dt);
         //console.log("DT: " + JSON.stringify(dt));
 
-        for (var i = 0; i < dt.getNumberOfRows(); i++) {
-            zoneQueryResult = dt.getValue(i, 0);
+
+            zoneQueryResult = dt.getValue(0, 0);
             //console.log("zoneResult = "+ zoneQueryResult);
             queryForSchool(addrLatLng, zoneQueryResult);
             
@@ -300,7 +300,6 @@ function queryForZone(addrLatLng) {
 		    });
 		    zoneLayer.setMap(map);
 		    //console.log("zone layer set");
-        }
     });
 
 
@@ -310,7 +309,7 @@ function queryForSchool(addrLatLng, zoneQueryResult) {
 
     var whereClause = 'WHERE Zone = ' + zoneQueryResult;
     var whereClauseIntersect = 'WHERE ST_INTERSECTS(geometry, CIRCLE( LATLNG('
-        + addrLatLng.Xa + ', ' + addrLatLng.Ya + '), 1200))';
+        + addrLatLng.lat() + ', ' + addrLatLng.lng() + '), 1609.34))';
 
     var charterQuery = 'select geometry, SCHOOL_NAM, SCH_ID, GRADE_SPAN, FEEDS_INTO, SCHOOL_PRO ' +
         'from 13vio8J9tcoSzNfLil8R8pymcL5TZ-1sJuvLhz9c';
@@ -431,8 +430,8 @@ function getSchoolData(response, queryType) {
 
         }
 
-        var lat = latlng.Xa;
-        var lng = latlng.Ya;
+        var lat = latlng.lat();
+        var lng = latlng.lng();
        
        if(queryType === 'msz' || queryType === 'mszcitywide'){
 			var name = dt.getValue(i, 1);
